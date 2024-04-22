@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Data Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>User Data Form</h1>
+    <form action="/" method="POST">
+        {% for field, values in options.items() %}
+            <label for="{{ field }}">{{ field.capitalize() }}:</label>
+            <select name="{{ field }}" id="{{ field }}">
+                {% for value in values %}
+                    <option value="{{ value }}">{{ value }}</option>
+                {% endfor %}
+            </select><br><br>
+        {% endfor %}
+
+        <button type="submit">Submit</button>
+    </form>
+    <div id="result" style="display: none;"></div>
+</body>
+</html>
